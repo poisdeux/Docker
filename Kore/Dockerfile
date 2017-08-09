@@ -11,7 +11,7 @@ ENV ANDROID_HOME /opt/android-sdk-linux
 RUN apt-get update -qq
 
 # Dependencies to execute Android builds
-RUN apt-get install -y openjdk-8-jdk wget expect unzip git
+RUN apt-get install -y openjdk-8-jdk wget expect unzip git lib32stdc++6
 
 WORKDIR /opt/
 RUN wget https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip
@@ -24,7 +24,7 @@ RUN unzip /opt/sdk-tools-linux-3859397.zip
 RUN bash -c 'echo -e "y\ny\ny\ny\ny\ny\ny\n" | sdkmanager --licenses'
 RUN sdkmanager "platforms;android-25"
 RUN sdkmanager "platform-tools"
-RUN sdkmanager "build-tools;25.0.2"
+RUN sdkmanager "build-tools;26.0.1"
 RUN sdkmanager "extras;google;m2repository"
 RUN sdkmanager "extras;android;m2repository"
 RUN sdkmanager "system-images;android-25;google_apis;x86_64"
@@ -37,6 +37,6 @@ WORKDIR /opt/Kore
 RUN ./gradlew
 
 #Create an android emulator. Not needed as our instrumented tests fail on a headless emulator
-#RUN echo no | avdmanager create avd -n "Nexus_5_API_25" --package "system-images;android-25;google_apis;x86_64" --tag "google_apis"
+avdmanager -v create avd -f -g google_apis -b x86_64 -d 'Nexus 5' -n test -c 100M -k 'system-images;android-25;google_apis;x86_64'
 
 RUN apt-get clean
