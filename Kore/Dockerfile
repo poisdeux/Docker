@@ -36,7 +36,8 @@ WORKDIR /opt/Kore
 #Load project dependencies
 RUN ./gradlew
 
-#Create an android emulator. Not needed as our instrumented tests fail on a headless emulator
+#Create an android emulator. 
 RUN avdmanager -v create avd -f -g google_apis -b x86_64 -d 'Nexus 5' -n test -c 100M -k 'system-images;android-25;google_apis;x86_64'
+COPY config.ini /root/.android/avd/test.avd/
 
 RUN apt-get clean
