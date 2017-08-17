@@ -30,12 +30,6 @@ RUN sdkmanager "extras;android;m2repository"
 RUN sdkmanager "system-images;android-25;google_apis;x86_64"
 RUN sdkmanager "emulator"
 
-WORKDIR /opt
-RUN git clone https://github.com/xbmc/Kore.git
-WORKDIR /opt/Kore
-#Load project dependencies
-RUN ./gradlew
-
 #Create an android emulator. 
 RUN avdmanager -v create avd -f -g google_apis -b x86_64 -d 'Nexus 5' -n test -c 100M -k 'system-images;android-25;google_apis;x86_64'
 COPY config.ini /root/.android/avd/test.avd/
