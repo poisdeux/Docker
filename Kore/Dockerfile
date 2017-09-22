@@ -22,16 +22,16 @@ RUN mkdir ${ANDROID_HOME}
 WORKDIR ${ANDROID_HOME}
 RUN unzip /opt/sdk-tools-linux-3859397.zip
 RUN bash -c 'echo -e "y\ny\ny\ny\ny\ny\ny\n" | sdkmanager --licenses'
-RUN sdkmanager "platforms;android-25"
+RUN sdkmanager "platforms;android-26"
 RUN sdkmanager "platform-tools"
 RUN sdkmanager "build-tools;26.0.1"
 RUN sdkmanager "extras;google;m2repository"
 RUN sdkmanager "extras;android;m2repository"
-RUN sdkmanager "system-images;android-25;google_apis;x86_64"
+RUN sdkmanager "system-images;android-26;google_apis;x86"
 RUN sdkmanager "emulator"
 
 #Create an android emulator. 
-RUN avdmanager -v create avd -f -g google_apis -b x86_64 -d 'Nexus 5' -n test -c 100M -k 'system-images;android-25;google_apis;x86_64'
+RUN avdmanager -v create avd -f -g google_apis -b x86_64 -d 'Nexus 5' -n test -c 100M -k 'system-images;android-26;google_apis;x86'
 COPY config.ini /root/.android/avd/test.avd/
 
 RUN apt-get clean
