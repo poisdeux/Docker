@@ -24,7 +24,7 @@ RUN unzip /opt/sdk-tools-linux-3859397.zip
 RUN bash -c 'echo -e "y\ny\ny\ny\ny\ny\ny\n" | sdkmanager --licenses'
 RUN sdkmanager "platforms;android-26"
 RUN sdkmanager "platform-tools"
-RUN sdkmanager "build-tools;26.0.1"
+RUN sdkmanager "build-tools;26.0.2"
 RUN sdkmanager "extras;google;m2repository"
 RUN sdkmanager "extras;android;m2repository"
 RUN sdkmanager "system-images;android-26;google_apis;x86"
