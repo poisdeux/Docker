@@ -20,6 +20,7 @@ docker run -it kore /bin/bash
 
 1. Start an interactive shell on the docker image
 2. Get latest commits
-```git pull```
+```git clone https://github.com/xbmc/Kore.git```
 3. Run local unit/integration tests
+```cd Kore```
 ```./gradlew testFullDebugUnitTest```
