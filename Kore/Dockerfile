@@ -31,7 +31,7 @@ RUN sdkmanager "system-images;android-26;google_apis;x86"
 RUN sdkmanager "emulator"
 
 #Create an android emulator. 
-RUN avdmanager -v create avd -f -g google_apis -b x86 -d 'Nexus 5' -n test -c 100M -k 'system-images;android-26;google_apis;x86' -p ${ANDROID_HOME}/.android/
-COPY config.ini ${ANDROID_HOME}/.android/avd/test.avd/
+#RUN avdmanager -v create avd -f -g google_apis -b x86 -d 'Nexus 5' -n test -c 100M -k 'system-images;android-26;google_apis;x86' -p ${ANDROID_HOME}/.android/
+#COPY config.ini ${ANDROID_HOME}/.android/avd/test.avd/
 
 RUN apt-get clean
